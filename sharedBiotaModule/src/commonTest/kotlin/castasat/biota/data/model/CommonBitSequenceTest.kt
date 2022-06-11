@@ -136,4 +136,30 @@ class CommonBitSequenceTest {
             )
         }
     }
+
+    @Test
+    fun checkBitSequenceCanBeConstructedFromCharSequence() {
+        with(BitSequence("01")) { // constructor
+            assertContains(
+                iterable = bits,
+                element = NEGATIVE,
+                message = "BitSequence constructed from CharSequence containing '0' should contain NEGATIVE"
+            )
+            assertContains(
+                iterable = bits,
+                element = POSITIVE,
+                message = "BitSequence constructed from CharSequence containing '1' should contain POSITIVE"
+            )
+            assertEquals(
+                expected = 2,
+                actual = bits.size,
+                message = "BitSequence constructed from CharSequence containing two elements should have two elements"
+            )
+            assertContentEquals(
+                expected = listOf(NEGATIVE, POSITIVE),
+                actual = bits,
+                message = "BitSequence constructed from CharSequence should have equal list of Bits elements"
+            )
+        }
+    }
 }
