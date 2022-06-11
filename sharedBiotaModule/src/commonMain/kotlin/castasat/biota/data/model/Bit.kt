@@ -1,6 +1,8 @@
 package castasat.biota.data.model
 
-enum class Bit(val boolean: Boolean) {
-    NEGATIVE(false),
-    POSITIVE(true);
+data class Bit(private val value: Boolean) {
+    companion object {
+        val POSITIVE = Bit(value = true)
+        val NEGATIVE = Bit(value = false)
+    }
 }
