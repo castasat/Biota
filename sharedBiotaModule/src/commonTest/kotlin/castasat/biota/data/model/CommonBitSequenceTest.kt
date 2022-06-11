@@ -58,4 +58,30 @@ class CommonBitSequenceTest {
             )
         }
     }
+
+    @Test
+    fun checkBitSequenceCanBeConstructedFromBitVararg() {
+        with(BitSequence(POSITIVE, NEGATIVE)) { // constructor
+            assertContains(
+                iterable = bits,
+                element = NEGATIVE,
+                message = "BitSequence constructed from vararg Bit containing NEGATIVE should contain NEGATIVE"
+            )
+            assertContains(
+                iterable = bits,
+                element = POSITIVE,
+                message = "BitSequence constructed from vararg Bit containing POSITIVE should contain POSITIVE"
+            )
+            assertEquals(
+                expected = 2,
+                actual = bits.size,
+                message = "BitSequence constructed from vararg Bit containing two elements should have two elements"
+            )
+            assertContentEquals(
+                expected = listOf(POSITIVE, NEGATIVE),
+                actual = bits,
+                message = "BitSequence constructed from vararg Bit should have equal list of bits elements"
+            )
+        }
+    }
 }
