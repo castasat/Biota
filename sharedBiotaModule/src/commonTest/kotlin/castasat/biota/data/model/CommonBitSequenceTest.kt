@@ -65,22 +65,74 @@ class CommonBitSequenceTest {
             assertContains(
                 iterable = bits,
                 element = NEGATIVE,
-                message = "BitSequence constructed from vararg Bit containing NEGATIVE should contain NEGATIVE"
+                message = "BitSequence constructed from Bit vararg containing NEGATIVE should contain NEGATIVE"
             )
             assertContains(
                 iterable = bits,
                 element = POSITIVE,
-                message = "BitSequence constructed from vararg Bit containing POSITIVE should contain POSITIVE"
+                message = "BitSequence constructed from Bit vararg containing POSITIVE should contain POSITIVE"
             )
             assertEquals(
                 expected = 2,
                 actual = bits.size,
-                message = "BitSequence constructed from vararg Bit containing two elements should have two elements"
+                message = "BitSequence constructed from Bit vararg containing two elements should have two elements"
             )
             assertContentEquals(
                 expected = listOf(POSITIVE, NEGATIVE),
                 actual = bits,
-                message = "BitSequence constructed from vararg Bit should have equal list of bits elements"
+                message = "BitSequence constructed from Bit vararg should have equal list of Bits elements"
+            )
+        }
+    }
+
+    @Test
+    fun checkBitSequenceCanBeConstructedFromBooleanVararg() {
+        with(BitSequence(true, false)) { // constructor
+            assertContains(
+                iterable = bits,
+                element = NEGATIVE,
+                message = "BitSequence constructed from Boolean vararg containing false should contain NEGATIVE"
+            )
+            assertContains(
+                iterable = bits,
+                element = POSITIVE,
+                message = "BitSequence constructed from Boolean vararg containing true should contain POSITIVE"
+            )
+            assertEquals(
+                expected = 2,
+                actual = bits.size,
+                message = "BitSequence constructed from Boolean vararg containing two elements should have two elements"
+            )
+            assertContentEquals(
+                expected = listOf(POSITIVE, NEGATIVE),
+                actual = bits,
+                message = "BitSequence constructed from Boolean vararg should have equal list of Bits elements"
+            )
+        }
+    }
+
+    @Test
+    fun checkBitSequenceCanBeConstructedFromCharVararg() {
+        with(BitSequence('1', '0')) { // constructor
+            assertContains(
+                iterable = bits,
+                element = NEGATIVE,
+                message = "BitSequence constructed from Char vararg containing '0' should contain NEGATIVE"
+            )
+            assertContains(
+                iterable = bits,
+                element = POSITIVE,
+                message = "BitSequence constructed from Char vararg containing '1' should contain POSITIVE"
+            )
+            assertEquals(
+                expected = 2,
+                actual = bits.size,
+                message = "BitSequence constructed from Char vararg containing two elements should have two elements"
+            )
+            assertContentEquals(
+                expected = listOf(POSITIVE, NEGATIVE),
+                actual = bits,
+                message = "BitSequence constructed from Char vararg should have equal list of Bits elements"
             )
         }
     }

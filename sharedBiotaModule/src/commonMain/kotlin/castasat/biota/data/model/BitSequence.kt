@@ -1,5 +1,7 @@
 package castasat.biota.data.model
 
+import castasat.biota.data.model.Bit.*
+
 class BitSequence() {
     var bits: List<Bit> = emptyList()
 
@@ -9,5 +11,27 @@ class BitSequence() {
 
     constructor(vararg bits: Bit) : this() {
         this.bits = listOf(*bits)
+    }
+
+    constructor(vararg booleans: Boolean) : this() {
+        this.bits = booleans
+            .map { boolean: Boolean ->
+                when (boolean) {
+                    false -> NEGATIVE
+                    true -> POSITIVE
+                }
+            }
+    }
+
+    constructor(vararg chars: Char) : this() {
+        this.bits = chars
+            .map { char ->
+                when (char) {
+                    '0' -> NEGATIVE
+                    '1' -> POSITIVE
+                    else -> null
+                }
+            }
+            .filterNotNull()
     }
 }
