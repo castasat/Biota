@@ -5,8 +5,8 @@ import kotlin.test.*
 
 class CommonBitSequenceTest {
     @Test
-    fun checkBitSequenceCanBeConstructedFromSinglePositiveBit() {
-        with(BitSequence(POSITIVE)) { // constructor
+    fun checkBitSequenceCanBeConstructedFromSingleBit() {
+        with(BitSequence(POSITIVE)) { // constructor with single POSITIVE
             assertContains(
                 iterable = bits,
                 element = POSITIVE,
@@ -18,11 +18,7 @@ class CommonBitSequenceTest {
                 message = "BitSequence constructed from single POSITIVE Bit should have single element"
             )
         }
-    }
-
-    @Test
-    fun checkBitSequenceCanBeConstructedFromSingleNegativeBit() {
-        with(BitSequence(NEGATIVE)) { // constructor
+        with(BitSequence(NEGATIVE)) { // constructor with single NEGATIVE
             assertContains(
                 iterable = bits,
                 element = NEGATIVE,
@@ -32,6 +28,33 @@ class CommonBitSequenceTest {
                 expected = 1,
                 actual = bits.size,
                 message = "BitSequence constructed from single NEGATIVE Bit should have single element"
+            )
+        }
+    }
+
+    @Test
+    fun checkBitSequenceCanBeConstructedFromBitList() {
+        val bitList = listOf(POSITIVE, NEGATIVE)
+        with(BitSequence(bitList)) { // constructor
+            assertContains(
+                iterable = bits,
+                element = NEGATIVE,
+                message = "BitSequence constructed from bitList containing NEGATIVE should contain NEGATIVE"
+            )
+            assertContains(
+                iterable = bits,
+                element = POSITIVE,
+                message = "BitSequence constructed from bitList containing POSITIVE should contain POSITIVE"
+            )
+            assertEquals(
+                expected = 2,
+                actual = bits.size,
+                message = "BitSequence constructed from bitList containing two elements should have two elements"
+            )
+            assertContentEquals(
+                expected = bitList,
+                actual = bits,
+                message = "BitSequence constructed from bitList should have equal Bit elements"
             )
         }
     }

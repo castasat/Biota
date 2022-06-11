@@ -6,4 +6,8 @@ class BitSequence() {
     constructor(bit: Bit) : this() {
         this.bits = listOf(bit)
     }
+
+    constructor(bitList: List<Bit>) : this() {
+        this.bits = bitList
+    }
 }
