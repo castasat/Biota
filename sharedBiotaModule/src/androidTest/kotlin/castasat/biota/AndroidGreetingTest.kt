@@ -5,10 +5,10 @@ import kotlin.test.assertTrue
 
 class AndroidGreetingTest {
     @Test
-    fun testExample() {
+    fun checkGreetingContainsAndroid() {
         assertTrue(
             Greeting().greeting().contains("Android"),
-            "Check Android is mentioned"
+            "Check greeting contains Android"
         )
     }
 }
