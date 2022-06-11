@@ -162,4 +162,13 @@ class CommonBitSequenceTest {
             )
         }
     }
+
+    @Test
+    fun checkBitSequenceAddMethodIsCorrect() {
+        assertContentEquals(
+            expected = BitSequence("0110").bits,
+            actual = BitSequence("01").add(BitSequence("10")).bits,
+            message = "BitSequence add method should be correct"
+        )
+    }
 }

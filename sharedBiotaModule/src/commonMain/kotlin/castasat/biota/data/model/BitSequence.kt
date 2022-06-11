@@ -46,4 +46,9 @@ open class BitSequence() {
             }
             .filterNotNull()
     }
+
+    fun add(bitSequence: BitSequence): BitSequence {
+        bits = bits + bitSequence.bits
+        return this
+    }
 }
